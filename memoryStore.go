@@ -2,22 +2,22 @@ package extension
 
 import "time"
 
-type MemoryStorageItem struct {
+type MemoryStoreItem struct {
 	Value   any
 	Expired time.Time
 }
 
-type MemoryStorage struct {
-	data map[string]MemoryStorageItem
+type MemoryStore struct {
+	data map[string]MemoryStoreItem
 }
 
-func (s *MemoryStorage) Init() {
+func (s *MemoryStore) Init() {
 	if s.data == nil {
-		s.data = map[string]MemoryStorageItem{}
+		s.data = map[string]MemoryStoreItem{}
 	}
 }
 
-func (s *MemoryStorage) Get(key string) (any, bool) {
+func (s *MemoryStore) Get(key string) (any, bool) {
 	item, isExist := s.data[key]
 	if !isExist {
 		return nil, isExist
@@ -29,8 +29,8 @@ func (s *MemoryStorage) Get(key string) (any, bool) {
 	return item.Value, isExist
 }
 
-func (s *MemoryStorage) Set(key string, value any, ttl ...int) {
-	item := MemoryStorageItem{
+func (s *MemoryStore) Set(key string, value any, ttl ...int) {
+	item := MemoryStoreItem{
 		Value: value,
 	}
 	for _, t := range ttl {
@@ -41,6 +41,6 @@ func (s *MemoryStorage) Set(key string, value any, ttl ...int) {
 	s.data[key] = item
 }
 
-func (s *MemoryStorage) Remove(key string) {
+func (s *MemoryStore) Remove(key string) {
 	delete(s.data, key)
 }

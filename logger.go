@@ -1,4 +1,4 @@
-package lib
+package extension
 
 import (
 	"fmt"
