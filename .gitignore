@@ -1,0 +1,30 @@
+.DS_Store
+/tmp
+
+# Env files
+.env
+.env.*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.lock
+*lock.json
+*.zip
+*.log
+
+# Vendor
+/vendor
+
+# refresh
+gin-bin
+gin-bin.exe
+
+# build
+build-app
+com.keenoho
