@@ -33,11 +33,11 @@ func (s *MemoryStore) Set(key string, value any, ttl ...int) {
 	item := MemoryStoreItem{
 		Value: value,
 	}
-	for _, t := range ttl {
-		if t > 0 {
-			item.Expired = time.Now().Add(time.Duration(t) * time.Second)
-		}
+	if len(ttl) > 0 {
+		t := ttl[0]
+		item.Expired = time.Now().Add(time.Duration(t) * time.Second)
 	}
+
 	s.data[key] = item
 }
 
